@@ -5,7 +5,6 @@ import jobs from '../jobs';
 
 // eslint-disable-next-line
 const JobListings = ({ isHome= false }) => {
-  isHome ? jobs.slice(0, 3): jobs;
   // const [jobs, setJobs] = useState([]);
   // const [loading, setLoading] = useState(true);
 
@@ -26,6 +25,7 @@ const JobListings = ({ isHome= false }) => {
   //   fetchJobs();
   //   //eslint-disable-next-line
   // }, []);
+  const recentJobs = isHome ? jobs.slice(0, 3): jobs
 
   return (
     <section className='bg-blue-50 px-4 py-10'>
@@ -36,7 +36,7 @@ const JobListings = ({ isHome= false }) => {
 
         
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-            {jobs.map((job) => (
+            { recentJobs.map((job) => (
               <JobListing key={job.id} job={job} />
              ))}
           </div>
